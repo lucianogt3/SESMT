@@ -1,0 +1,5 @@
+{
+  "name": "SESMT Portal v2 - SINAN & CAT",
+  "description": "A comprehensive occupational health and safety management platform for recording, tracking, and analyzing workplace accidents (SINAN/CAT notifications) with integrated administrative dashboards.",
+  "requestFramePermissions": []
+}

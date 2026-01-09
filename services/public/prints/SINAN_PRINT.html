@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SINAN - Ficha de Investigação (Acidente de Trabalho)</title>
+
+  <style>
+    @page { size: A4; margin: 10mm; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #fff;
+      color: #000;
+      font-family: "Times New Roman", Times, serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 10px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .btn {
+      border: 1px solid #999;
+      background: #f5f5f5;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn:hover { background: #eee; }
+
+    @media print { .toolbar { display:none !important; } }
+
+    .box { border: 2px solid #000; padding: 8px; box-sizing: border-box; }
+
+    .header {
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.25;
+      margin-top: 4mm;
+    }
+    .header .top { font-weight: 700; font-size: 10pt; }
+    .header .title { font-weight: 800; font-size: 16pt; margin: 3mm 0 1mm; }
+    .header .sub { font-weight: 700; font-size: 9pt; }
+
+    .section { margin-top: 8mm; }
+    .section-title {
+      font-weight: 800;
+      font-size: 10pt;
+      text-transform: uppercase;
+      border-bottom: 1px solid #000;
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+    }
+
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+    .grid-3 { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 6mm; }
+
+    .field { font-size: 9pt; margin: 2px 0; }
+    .label { font-weight: 800; }
+    .value { font-weight: 700; text-transform: uppercase; }
+
+    .desc {
+      border: 1px solid #000;
+      padding: 8px;
+      min-height: 28mm;
+      font-size: 9pt;
+    }
+    .desc .label {
+      display:block;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #000;
+      padding-bottom: 3px;
+    }
+    .desc .value { font-weight: 700; font-style: italic; white-space: pre-wrap; text-transform: none; }
+
+    .small-note { font-size: 8pt; margin-top: 4mm; }
+    .sign {
+      margin-top: 18mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30mm;
+      align-items: end;
+    }
+    .sign .line {
+      border-top: 1px solid #000;
+      text-align:center;
+      padding-top: 3px;
+      font-size: 8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Evita quebras ruins */
+    .no-break { page-break-inside: avoid; break-inside: avoid; }
+  </style>
+</head>
+
+<body>
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">Imprimir</button>
+  </div>
+
+  <main class="page">
+    <div class="box header">
+      <div class="top">REPÚBLICA FEDERATIVA DO BRASIL - MINISTÉRIO DA SAÚDE</div>
+      <div class="title">FICHA DE INVESTIGAÇÃO - ACIDENTE DE TRABALHO</div>
+      <div class="sub">DOCUMENTO ALIMENTADO AUTOMATICAMENTE VIA SESMT DIGITAL</div>
+    </div>
+
+    <!-- Identificação do registro -->
+    <section class="section no-break">
+      <div class="grid-3">
+        <div class="box">
+          <div class="section-title">IDENTIFICAÇÃO</div>
+          <div class="field"><span class="label">ID Registro: </span><span class="value" data-field="id">-</span></div>
+          <div class="field"><span class="label">Data Registro: </span><span class="value" data-field="dataRegistro">-</span></div>
+          <div class="field"><span class="label">Status: </span><span class="value" data-field="status">-</span></div>
+        </div>
+
+        <div class="box">
+          <div class="section-title">TIPO</div>
+          <div class="field"><span class="label">Tipo de ocorrência: </span><span class="value" data-field="tipoAcidente">-</span></div>
+          <div class="field"><span class="label">Houve afastamento? </span><span class="value" data-field="afastamento">-</span></div>
+          <div class="field"><span class="label">Retorno/Recidiva: </span><span class="value" data-field="retornoRecidiva">-</span></div>
+        </div>
+
+        <div class="box">
+          <div class="section-title">LOCAL</div>
+          <div class="field"><span class="label">Setor/Local: </span><span class="value" data-field="setorAcidente">-</span></div>
+          <div class="field"><span class="label">Município/UF: </span><span class="value" data-field="colaborador.municipio">-</span>/<span class="value" data-field="colaborador.estado">-</span></div>
+          <div class="field"><span class="label">CEP: </span><span class="value" data-field="colaborador.cep">-</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colaborador + Detalhes do acidente -->
+    <section class="section no-break">
+      <div class="grid-2">
+        <div class="box">
+          <div class="section-title">DADOS DO COLABORADOR</div>
+          <div class="field"><span class="label">Nome: </span><span class="value" data-field="colaborador.nome">-</span></div>
+          <div class="field"><span class="label">CPF: </span><span class="value" data-field="colaborador.cpf">-</span></div>
+          <div class="field"><span class="label">Nascimento: </span><span class="value" data-field="colaborador.dataNascimento">-</span></div>
+          <div class="field"><span class="label">Sexo: </span><span class="value" data-field="colaborador.sexo">-</span></div>
+          <div class="field"><span class="label">Escolaridade: </span><span class="value" data-field="colaborador.escolaridade">-</span></div>
+          <div class="field"><span class="label">Profissão: </span><span class="value" data-field="colaborador.profissao">-</span></div>
+          <div class="field"><span class="label">Matrícula: </span><span class="value" data-field="colaborador.matricula">-</span></div>
+        </div>
+
+        <div class="box">
+          <div class="section-title">DETALHES DO ACIDENTE</div>
+          <div class="field"><span class="label">Data do Acidente: </span><span class="value" data-field="dataAcidente">-</span></div>
+          <div class="field"><span class="label">Hora: </span><span class="value" data-field="horaAcidente">-</span></div>
+          <div class="field"><span class="label">Parte do Corpo: </span><span class="value" data-field="parteCorpo">-</span></div>
+          <div class="field"><span class="label">Lateralidade: </span><span class="value" data-field="lateralidade">-</span></div>
+          <div class="field"><span class="label">Agente causador: </span><span class="value" data-field="agenteCausador">-</span></div>
+          <div class="field"><span class="label">CID (opcional): </span><span class="value" data-field="cid">-</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Residência (opcional, mas deixa “com cara de formulário oficial”) -->
+    <section class="section no-break">
+      <div class="box">
+        <div class="section-title">DADOS DE RESIDÊNCIA</div>
+        <div class="grid-2">
+          <div>
+            <div class="field"><span class="label">Endereço: </span><span class="value" data-field="colaborador.endereco">-</span>, <span class="value" data-field="colaborador.numero">-</span></div>
+            <div class="field"><span class="label">Bairro: </span><span class="value" data-field="colaborador.bairro">-</span></div>
+          </div>
+          <div>
+            <div class="field"><span class="label">Município/UF: </span><span class="value" data-field="colaborador.municipio">-</span> / <span class="value" data-field="colaborador.estado">-</span></div>
+            <div class="field"><span class="label">CEP: </span><span class="value" data-field="colaborador.cep">-</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Descrição -->
+    <section class="section">
+      <div class="desc">
+        <span class="label">DESCRIÇÃO DOS FATOS</span>
+        <div class="value" data-field="descricaoFato">-</div>
+      </div>
+
+      <div class="small-note">
+        Observação: A impressão foi gerada automaticamente com base no registro eletrônico do SESMT.
+      </div>
+    </section>
+
+    <section class="sign">
+      <div class="line">ASSINATURA DO RESPONSÁVEL</div>
+      <div class="line">ASSINATURA DO COLABORADOR</div>
+    </section>
+  </main>
+
+  <script>
+    function onlyDigits(v) { return String(v || "").replace(/\D/g, ""); }
+
+    function formatCPF(cpf) {
+      const d = onlyDigits(cpf).padStart(11, "0").slice(-11);
+      return d.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
+    }
+
+    function formatDateBR(v) {
+      const s = String(v || "").trim();
+      if (!s) return "-";
+      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if (m) return `${m[3]}/${m[2]}/${m[1]}`;
+      const md = s.match(/^(\d{4})-(\d{2})-(\d{2})T/);
+      if (md) return `${md[3]}/${md[2]}/${md[1]}`;
+      if (/^\d{2}\/\d{2}\/\d{4}$/.test(s)) return s;
+      return s;
+    }
+
+    function getByPath(obj, path) {
+      return path.split(".").reduce((acc, key) => (acc && acc[key] != null ? acc[key] : undefined), obj);
+    }
+
+    (function hydrate() {
+      const data = window.__DATA__ || {};
+      document.querySelectorAll("[data-field]").forEach((el) => {
+        const field = el.getAttribute("data-field");
+        let value = getByPath(data, field);
+
+        if (field === "colaborador.cpf") value = formatCPF(value);
+        if (field === "dataAcidente") value = formatDateBR(value);
+        if (field === "colaborador.dataNascimento") value = formatDateBR(value);
+        if (field === "dataRegistro") value = formatDateBR(value);
+
+        if (value == null || value === "") value = "-";
+        el.textContent = String(value);
+      });
+    })();
+  </script>
+</body>
+</html>
